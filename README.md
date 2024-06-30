@@ -4,6 +4,7 @@
 
 - Docker
 - Docker Compose
+- PHP 8.2 (Laravel 11)
 
 ## Установка и запуск
 
@@ -11,18 +12,25 @@
     ```bash
     git clone https://github.com/nurb8k/test_task.git
     cd test_task
+   
     ```
-
-2. Установите зависимости:
+2. Создайте .env:
     ```bash
-    ./vendor/bin/sail composer install
+    cp .env.example .env
+    ```
+3. Установите зависимости:
+    ```bash
+    composer install
+    composer require laravel/sail --dev
+    php artisan sail:install
     ```
 
-3. Запустите контейнеры Docker:
+4. Запустите контейнеры Docker:
     ```bash
     ./vendor/bin/sail up -d
     ```
 
-4. Выполните миграции:
+5. Выполните миграции:
     ```bash
-    ./vendor/bin
+    ./vendor/bin/sail artisan migrate
+    ```
