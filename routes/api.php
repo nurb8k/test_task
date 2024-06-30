@@ -18,12 +18,15 @@ Route::prefix('v1')->group(function () {
    });
 
 
-    Route::group(['prefix' => 'post','controller' => PostController::class, 'middleware' => 'auth:sanctum'], function () {
-        Route::get('/index','index');
-        Route::post('/store','store');
-        Route::get('/show/{id}','show');
-        Route::put('/update/{id}','update');
-        Route::delete('/delete/{id}','delete');
+    Route::group(['prefix' => 'post','controller' => PostController::class], function () {
+        Route::get('/','index');
+
+        Route::group(['middleware' => 'auth:sanctum'], function () {
+            Route::post('/store','store');
+            Route::post('/update/{post}','update');
+            Route::delete('/delete/{post}','delete');
+        });
+
     });
 
 

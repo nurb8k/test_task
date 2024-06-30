@@ -18,7 +18,7 @@ class PostResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'content' => Str::limit($this->content, 128, '...'),
+            'body' => Str::limit($this->body, 128, '...'),
         ];
     }
 }
